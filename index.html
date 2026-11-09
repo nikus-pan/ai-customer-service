@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="靈機 AI 客服 — 為台灣中小企業打造的 AI 客服整合方案。串接 LINE、官網與社群，24 小時自動回覆、導購與轉真人，最快 3 天導入。" />
+  <meta name="keywords" content="AI客服,聊天機器人,LINE客服,AI Agent,客服自動化,靈機工作室" />
+  <meta name="theme-color" content="#0b1020" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="靈機 AI 客服｜讓 AI 接手 80% 的重複客服訊息" />
+  <meta property="og:description" content="串接 LINE、官網與社群，24 小時自動回覆、導購與轉真人。" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&q=80" />
+
+  <title>靈機 AI 客服｜24 小時智慧的客服夥伴</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
+</head>
+<body>
+  <!-- 示範網站提示 -->
+  <div class="demo-ribbon">作品集示範 · 靈機工作室 Spark Studio · 以下對話為模擬展示</div>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a href="#top" class="logo" aria-label="靈機 AI 客服 首頁">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        </span>
+        <span class="logo-text">靈機 AI 客服<small>Spark AI Desk</small></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="主選單">
+        <ul>
+          <li><a href="#demo">線上體驗</a></li>
+          <li><a href="#features">功能</a></li>
+          <li><a href="#how">導入流程</a></li>
+          <li><a href="#pricing">方案定價</a></li>
+          <li><a href="#contact" class="nav-cta">預約導入</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="top">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="dot"></span> AI CUSTOMER SERVICE · 為台灣中小企業打造</p>
+        <h1>讓 AI 接手 <span class="hl">80%</span> 的重複客服訊息。</h1>
+        <p class="hero-sub">靈機 AI 客服串接你的 LINE、官網與社群，24 小時自動回覆常見問題、協助導購、必要時轉接真人。最快 3 天上線，不用改動現有系統。</p>
+        <div class="hero-actions">
+          <a href="#demo" class="btn btn-primary">立即試玩對話</a>
+          <a href="#pricing" class="btn btn-ghost">查看方案定價</a>
+        </div>
+        <ul class="hero-metrics">
+          <li><strong>24/7</strong><span>全年無休回覆</span></li>
+          <li><strong>&lt; 3 秒</strong><span>平均首次回應</span></li>
+          <li><strong>3 天</strong><span>完成導入</span></li>
+        </ul>
+      </div>
+
+      <!-- 互動對話展示 -->
+      <div class="hero-widget reveal" id="demo">
+        <div class="chat-window" aria-label="AI 客服對話展示">
+          <div class="chat-topbar">
+            <div class="chat-agent">
+              <span class="agent-avatar" aria-hidden="true">開</span>
+              <div>
+                <strong>島作選物 AI 客服</strong>
+                <span class="agent-status"><i></i> 線上・立即回覆</span>
+              </div>
+            </div>
+            <span class="chat-badge">示範</span>
+          </div>
+
+          <div class="chat-log" id="chatLog" aria-live="polite">
+            <div class="msg msg-bot">
+              <p>您好！我是島作選物的 AI 客服 🌿 想聊聊什麼都可以，也可以直接點下面的問題試試。</p>
+            </div>
+          </div>
+
+          <div class="chat-chips" id="chatChips">
+            <button type="button" data-q="q_shipping">運費怎麼算？</button>
+            <button type="button" data-q="q_return">可以退換貨嗎？</button>
+            <button type="button" data-q="q_hours">門市幾點開？</button>
+            <button type="button" data-q="q_order">我的訂單到哪了？</button>
+            <button type="button" data-q="q_human">我要找真人</button>
+          </div>
+
+          <form class="chat-input" id="chatForm">
+            <input type="text" id="chatText" placeholder="輸入你的問題…" aria-label="輸入訊息" autocomplete="off" />
+            <button type="submit" aria-label="送出訊息">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </form>
+        </div>
+        <p class="widget-note">↑ 這是可互動的模擬對話，回覆邏輯由前端腳本驅動（未串接真實 LLM）。</p>
+      </div>
+    </div>
+
+    <div class="container logos reveal" aria-label="可整合的服務">
+      <span>可整合：</span>
+      <ul>
+        <li>LINE 官方帳號</li>
+        <li>官方網站</li>
+        <li>Facebook Messenger</li>
+        <li>Instagram 私訊</li>
+        <li>WhatsApp</li>
+        <li>Email</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 痛點 -> 解方 ===== -->
+  <section class="section pain" id="pain">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">為什麼需要</p>
+        <h2 class="section-title">客服訊息回不完，商機卻一直漏掉</h2>
+        <p class="section-lead">我們訪談過數十間台灣小店與電商，重複的問題佔了客服八成時間。</p>
+      </div>
+      <div class="pain-grid reveal">
+        <div class="pain-col">
+          <h3>導入前</h3>
+          <ul>
+            <li>同一個問題每天回 50 次</li>
+            <li>半夜與假日沒人能回，客人跑掉</li>
+            <li>訊息散在 LINE、FB、IG 三處</li>
+            <li>旺季爆量，回覆速度直線下滑</li>
+          </ul>
+        </div>
+        <div class="pain-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+        <div class="pain-col pain-col--good">
+          <h3>導入後</h3>
+          <ul>
+            <li>AI 自動回覆 8 成常見問題</li>
+            <li>24 小時即時應答，不漏接夜間詢問</li>
+            <li>全通路收進同一個後台</li>
+            <li>複雜問題自動轉真人，並附上對話摘要</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 功能 ===== -->
+  <section class="section features" id="features">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">核心功能</p>
+        <h2 class="section-title">像請了一位不會累的客服</h2>
+      </div>
+      <div class="feature-grid reveal">
+        <article class="feature-card">
+          <span class="f-icon" aria-hidden="true">🧠</span>
+          <h3>懂你的知識庫</h3>
+          <p>匯入官網、商品說明、常見問題與歷史對話，AI 依你的資料回答，不會胡謅。</p>
+        </article>
+        <article class="feature-card">
+          <span class="f-icon" aria-hidden="true">🛒</span>
+          <h3>邊聊邊導購</h3>
+          <p>主動推薦商品、說明規格、帶到結帳頁，把對話變成訂單。</p>
+        </article>
+        <article class="feature-card">
+          <span class="f-icon" aria-hidden="true">🙋</span>
+          <h3>聰明轉真人</h3>
+          <p>遇到客訴、退款或超出範圍的問題，自動標記並轉接，附上完整對話摘要。</p>
+        </article>
+        <article class="feature-card">
+          <span class="f-icon" aria-hidden="true">🔌</span>
+          <h3>多通路整合</h3>
+          <p>LINE、官網、Messenger、IG、WhatsApp、Email 同一個後台管理。</p>
+        </article>
+        <article class="feature-card">
+          <span class="f-icon" aria-hidden="true">📊</span>
+          <h3>對話分析報表</h3>
+          <p>看熱門問題、未解決率與轉換成效，用數據優化你的服務與選品。</p>
+        </article>
+        <article class="feature-card">
+          <span class="f-icon" aria-hidden="true">🔒</span>
+          <h3>資料在地安心</h3>
+          <p>可選擇資料留存在台灣節點；支援角色權限與對話稽核紀錄。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 導入流程 ===== -->
+  <section class="section how" id="how">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">導入流程</p>
+        <h2 class="section-title">三步驟，最快 3 天上線</h2>
+      </div>
+      <ol class="steps reveal">
+        <li class="step">
+          <span class="step-num">1</span>
+          <h3>盤點與設定</h3>
+          <p>我們整理你的常見問題、商品資料與服務政策，建立專屬知識庫（1 天）。</p>
+        </li>
+        <li class="step">
+          <span class="step-num">2</span>
+          <h3>串接與測試</h3>
+          <p>接上 LINE 官方帳號與官網元件，用真實情境調校語氣與流程（1–2 天）。</p>
+        </li>
+        <li class="step">
+          <span class="step-num">3</span>
+          <h3>上線與優化</h3>
+          <p>正式上線，前兩週我們陪你看報表、修正回覆，讓 AI 越用越準。</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== 定價 ===== -->
+  <section class="section pricing" id="pricing">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">方案定價</p>
+        <h2 class="section-title">依你的訊息量選擇</h2>
+        <p class="section-lead">皆含知識庫設定與首次串接服務。價格為示範參考，實際依需求客製。</p>
+      </div>
+      <div class="plan-grid reveal">
+        <article class="plan">
+          <h3 class="plan-name">入門 Starter</h3>
+          <p class="plan-desc">適合剛起步的小店與個人品牌</p>
+          <p class="plan-price"><span>NT$ 3,600</span> / 月</p>
+          <ul class="plan-features">
+            <li>每月 1,000 則對話</li>
+            <li>1 個通路（LINE 或官網）</li>
+            <li>FAQ 知識庫（50 組問答）</li>
+            <li>基本對話報表</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline btn-block">選擇入門</a>
+        </article>
+
+        <article class="plan plan--featured">
+          <span class="plan-flag">最受歡迎</span>
+          <h3 class="plan-name">專業 Pro</h3>
+          <p class="plan-desc">最適合有穩定客流的電商與門市</p>
+          <p class="plan-price"><span>NT$ 8,800</span> / 月</p>
+          <ul class="plan-features">
+            <li>每月 5,000 則對話</li>
+            <li>3 個通路整合</li>
+            <li>商品導購與訂單查詢</li>
+            <li>智慧轉真人 + 對話摘要</li>
+            <li>完整分析報表</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary btn-block">選擇專業</a>
+        </article>
+
+        <article class="plan">
+          <h3 class="plan-name">企業 Enterprise</h3>
+          <p class="plan-desc">多門市、多品牌或高訊息量</p>
+          <p class="plan-price"><span>客製報價</span></p>
+          <ul class="plan-features">
+            <li>不限對話量</li>
+            <li>全通路 + API 整合</li>
+            <li>多品牌 / 多語系</li>
+            <li>專屬成功經理與 SLA</li>
+            <li>資料在地節點選項</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline btn-block">聯絡我們</a>
+        </article>
+      </div>
+      <p class="pricing-note reveal">＊以上為作品集示範定價，非正式報價。實際方案依產業與需求調整。</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section faq" id="faq">
+    <div class="container faq-wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">常見問題</p>
+        <h2 class="section-title">你可能想問</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details>
+          <summary>AI 會不會亂回答、講錯話？</summary>
+          <p>AI 只依據你提供的知識庫回答；找不到答案時會誠實說明並轉真人，不會自行編造。上線前我們會用你提供的問題清單做測試。</p>
+        </details>
+        <details>
+          <summary>需要改動我現有的網站或 LINE 嗎？</summary>
+          <p>不用。LINE 官方帳號以 LIFF / Messaging API 串接，官網只需放入一段程式碼即可，原有系統不受影響。</p>
+        </details>
+        <details>
+          <summary>支援繁體中文以外的語言嗎？</summary>
+          <p>支援。企業方案可設定多語系，服務不同國家的客人。</p>
+        </details>
+        <details>
+          <summary>我的資料安全嗎？</summary>
+          <p>對話資料加密傳輸與儲存，可選擇留存在台灣節點，並提供角色權限與稽核紀錄。我們不會將你的資料用於訓練他人模型。</p>
+        </details>
+        <details>
+          <summary>如果 AI 解決不了客人的問題怎麼辦？</summary>
+          <p>系統會依你設定的規則（例如出現客訴、退款等關鍵字）自動轉接真人，並附上完整對話摘要，接手的同事不用從頭問起。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA / 聯絡表單 ===== -->
+  <section class="section cta" id="contact">
+    <div class="container cta-grid">
+      <div class="cta-copy reveal">
+        <p class="eyebrow">預約導入</p>
+        <h2 class="section-title">想看它套用在你的店裡？</h2>
+        <p>留下聯絡方式與你的產業，我們會用你的實際商品與問題，做一段專屬的對話示範給你看。免費、不收費、不綁約。</p>
+        <ul class="cta-points">
+          <li><span aria-hidden="true">✓</span> 免費客製化對話示範</li>
+          <li><span aria-hidden="true">✓</span> 依你的訊息量估算方案</li>
+          <li><span aria-hidden="true">✓</span> 3 天可上線，隨時可停</li>
+        </ul>
+        <p class="cta-mail">或直接來信：<a href="mailto:nikus9612@gmail.com">nikus9612@gmail.com</a></p>
+      </div>
+
+      <div class="cta-form reveal">
+        <form id="leadForm" novalidate>
+          <div class="field">
+            <label for="l-name">姓名 <span class="req">*</span></label>
+            <input type="text" id="l-name" name="name" placeholder="王小明" required />
+            <small class="error" data-for="l-name"></small>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="l-email">Email <span class="req">*</span></label>
+              <input type="email" id="l-email" name="email" placeholder="you@example.com" required />
+              <small class="error" data-for="l-email"></small>
+            </div>
+            <div class="field">
+              <label for="l-phone">聯絡電話 <span class="req">*</span></label>
+              <input type="tel" id="l-phone" name="phone" placeholder="0912-345-678" required />
+              <small class="error" data-for="l-phone"></small>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="l-industry">產業別 <span class="req">*</span></label>
+              <select id="l-industry" name="industry" required>
+                <option value="">請選擇</option>
+                <option>餐飲 / 門市</option>
+                <option>電商 / 網路商店</option>
+                <option>美業 / 服務業</option>
+                <option>教育 / 補習班</option>
+                <option>醫療 / 診所</option>
+                <option>其他</option>
+              </select>
+              <small class="error" data-for="l-industry"></small>
+            </div>
+            <div class="field">
+              <label for="l-volume">每月訊息量</label>
+              <select id="l-volume" name="volume">
+                <option value="">不確定</option>
+                <option>500 則以下</option>
+                <option>500–2,000 則</option>
+                <option>2,000–5,000 則</option>
+                <option>5,000 則以上</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="l-msg">想解決的問題</label>
+            <textarea id="l-msg" name="message" rows="3" placeholder="例如：LINE 訊息太多回不完、想接官網客服…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">送出，預約免費示範</button>
+          <p class="form-note">送出即表示同意我們以您留下的聯絡方式聯繫。示範表單不會真的送出資料。</p>
+        </form>
+
+        <div class="form-success" id="formSuccess" hidden>
+          <div class="success-icon">✓</div>
+          <h4>收到你的需求了！</h4>
+          <p>我們會在 1 個工作日內與你聯繫，並附上一段為你客製的對話示範。</p>
+          <button type="button" class="btn btn-ghost" id="resetForm">再填一次</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        </span>
+        <h4>靈機工作室 Spark Studio</h4>
+        <p>用 AI 與程式，把好點子做出來。</p>
+        <p class="footer-mail"><a href="mailto:nikus9612@gmail.com">nikus9612@gmail.com</a></p>
+      </div>
+      <div class="footer-col">
+        <h5>產品</h5>
+        <ul>
+          <li><a href="#features">功能介紹</a></li>
+          <li><a href="#pricing">方案定價</a></li>
+          <li><a href="#demo">線上體驗</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>服務</h5>
+        <ul>
+          <li><a href="#how">導入流程</a></li>
+          <li><a href="#faq">常見問題</a></li>
+          <li><a href="#contact">預約導入</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>靈機工作室</h5>
+        <ul>
+          <li>AI Agent 開發</li>
+          <li>桌面 / 手機 App</li>
+          <li>網頁應用</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> 靈機工作室 Spark Studio · 本頁為作品集示範，數據與定價皆為示意</p>
+      <p>作品集 #3 · AI 客服整合展示</p>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="回到頂部">↑</button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
